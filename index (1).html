@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube SEO Pro Generator - Unlimited & Natural</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #ef4444;
+            --accent-hover: #dc2626;
+            --border: #334155;
+            --success: #10b981;
+            --input-bg: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .yt-badge {
+            background-color: var(--accent);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 1.2rem;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+
+        .input-section {
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .form-group small {
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-left: 6px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            width: 100%;
+            font-size: 1.05rem;
+            padding: 14px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background-color: #334155;
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #475569;
+        }
+
+        .btn-copy {
+            background-color: #2563eb;
+            color: white;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+        }
+
+        .btn-copy:hover {
+            background-color: #1d4ed8;
+        }
+
+        .btn-copy.copied {
+            background-color: var(--success);
+        }
+
+        .status-msg {
+            font-size: 0.85rem;
+            margin-top: 6px;
+            color: #38bdf8;
+            min-height: 20px;
+        }
+
+        .output-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .output-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-lang {
+            background: #334155;
+            color: #38bdf8;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .char-counter {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-right: 10px;
+        }
+
+        .char-counter.valid {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        textarea.output-box {
+            min-height: 280px;
+            resize: vertical;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        textarea.output-box-sm {
+            min-height: 110px;
+            resize: vertical;
+            font-size: 0.95rem;
+        }
+
+        .controls-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .controls-bar > div {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        @media (max-width: 600px) {
+            .input-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="yt-badge">YT</span> SEO & Description Generator</h1>
+            <p>Trending video link ya title daalein — Natural human-style description, 5-7 long-tail queries, hashtags aur 460-char viral tags paayein (No Limits)</p>
+        </header>
+
+        <div class="input-section">
+            <div class="form-group">
+                <label for="ytUrl">Trending YouTube Video Link <small>(Optional - Auto-fetch title)</small></label>
+                <div class="input-row">
+                    <input type="text" id="ytUrl" placeholder="https://www.youtube.com/watch?v=... ya https://youtu.be/...">
+                    <button type="button" class="btn btn-secondary" onclick="fetchVideoDetails()">Fetch Title</button>
+                </div>
+                <div id="fetchStatus" class="status-msg"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="videoTitle">Video Title <small>(Language automatic detect hogi: Hindi / Hinglish / English)</small></label>
+                <input type="text" id="videoTitle" placeholder="Apne video ka title yahan likhein ya upar link se fetch karein...">
+            </div>
+
+            <div class="controls-bar">
+                <div>
+                    <label for="langOverride" style="display:block; margin-bottom:6px; font-weight:600; font-size:0.9rem;">Language Detection</label>
+                    <select id="langOverride">
+                        <option value="auto">Auto-Detect from Title (Recommended)</option>
+                        <option value="hinglish">Hinglish (Hindi in Roman)</option>
+                        <option value="hindi">Hindi (Devanagari)</option>
+                        <option value="english">English</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="channelName" style="display:block; margin-bottom:6px; font-weight:600; font-size:0.9rem;">Channel Name <small>(Optional)</small></label>
+                    <input type="text" id="channelName" placeholder="Apne channel ka naam...">
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="generateSEO()">Generate Unlimited SEO Package</button>
+        </div>
+
+        <div class="output-grid">
+            <!-- Description Card -->
+            <div class="output-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        SEO Friendly Description
+                        <span id="detectedLangBadge" class="badge-lang">Auto</span>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-copy" onclick="copyText('descOutput', this)">Copy Description</button>
+                    </div>
+                </div>
+                <textarea id="descOutput" class="output-box" placeholder="Aapka natural SEO description yahan generate hoga..."></textarea>
+            </div>
+
+            <!-- Hashtags Card -->
+            <div class="output-card">
+                <div class="card-header">
+                    <div class="card-title">Trending Hashtags</div>
+                    <button type="button" class="btn btn-copy" onclick="copyText('hashtagOutput', this)">Copy Hashtags</button>
+                </div>
+                <textarea id="hashtagOutput" class="output-box-sm" placeholder="#hashtags yahan aayenge..."></textarea>
+            </div>
+
+            <!-- Viral Tags Card -->
+            <div class="output-card">
+                <div class="card-header">
+                    <div class="card-title">Viral Keywords / Tags (Lowercase, Comma Separated)</div>
+                    <div style="display:flex; align-items:center;">
+                        <span id="tagCharCount" class="char-counter">0 / 460 chars</span>
+                        <button type="button" class="btn btn-copy" onclick="copyText('tagsOutput', this)">Copy Tags</button>
+                    </div>
+                </div>
+                <textarea id="tagsOutput" class="output-box-sm" oninput="updateTagCount()" placeholder="comma separated lowercase keywords (max 460 characters)..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch video title using YouTube oEmbed (No API Key required, unlimited usage)
+        async function fetchVideoDetails() {
+            const urlInput = document.getElementById('ytUrl').value.trim();
+            const statusEl = document.getElementById('fetchStatus');
+            const titleInput = document.getElementById('videoTitle');
+
+            if (!urlInput) {
+                statusEl.textContent = "Pehle koi YouTube video link paste karein.";
+                statusEl.style.color = "#f87171";
+                return;
+            }
+
+            statusEl.textContent = "Video details fetch ho rahi hain...";
+            statusEl.style.color = "#38bdf8";
+
+            try {
+                // Using noembed.com as a reliable CORS-friendly oEmbed proxy for YouTube
+                const oembedUrl = `https://noembed.com/embed?url=${encodeURIComponent(urlInput)}`;
+                const response = await fetch(oembedUrl);
+                const data = await response.json();
+
+                if (data && data.title) {
+                    titleInput.value = data.title;
+                    statusEl.textContent = `Title fetched! (Channel: ${data.author_name || 'YouTube'})`;
+                    statusEl.style.color = "#10b981";
+                    generateSEO();
+                } else {
+                    throw new Error("Title not found");
+                }
+            } catch (err) {
+                statusEl.textContent = "Link se title fetch nahi ho paya (private/restricted video). Kripya title manually paste karein.";
+                statusEl.style.color = "#fbbf24";
+            }
+        }
+
+        // Detect Language: Hindi (Devanagari), Hinglish, or English
+        function detectLanguage(text) {
+            const override = document.getElementById('langOverride').value;
+            if (override !== 'auto') return override;
+
+            // Check for Devanagari Unicode range (ऀ-ॿ)
+            const devanagariRegex = /[ऀ-ॿ]/;
+            if (devanagariRegex.test(text)) {
+                return 'hindi';
+            }
+
+            // Common Hinglish markers
+            const hinglishWords = new Set([
+                'kaise', 'kya', 'kyu', 'kyon', 'kab', 'kahan', 'kaun', 'kisko', 'kisne',
+                'hai', 'hain', 'ho', 'hun', 'tha', 'thi', 'the', 'hoga', 'hogi', 'honge',
+                'mein', 'me', 'ko', 'se', 'ka', 'ki', 'ke', 'ne', 'par', 'pe', 'tak',
+                'aur', 'ya', 'lekin', 'magar', 'parantu', 'kyunki', 'isliye', 'agar',
+                'banaye', 'banayein', 'sikhe', 'sikhein', 'kare', 'karein', 'karna', 'karke',
+                'dekhe', 'dekhein', 'dekhna', 'dekho', 'jane', 'jaane', 'janiye', 'jaaniye',
+                'bataye', 'batayein', 'samjhe', 'samjhein', 'padhe', 'likhe', 'chahiye',
+                'apna', 'apni', 'apne', 'mera', 'meri', 'mere', 'tumhara', 'aapka', 'aapki',
+                'sabse', 'bahut', 'zyada', 'kam', 'accha', 'acha', 'bura', 'naya', 'nayi', 'naye',
+                'purana', 'sasta', 'mehenga', 'asan', 'aasan', 'tarika', 'tareeka', 'upay',
+                'ghar', 'paise', 'paisa', 'kamaye', 'kamayein', 'mobile', 'se', 'bina',
+                'wala', 'wali', 'wale', 'abhi', 'aaj', 'kal', 'roz', 'har', 'ek', 'do', 'teen',
+                'vlog', 'kahani', 'chutkule', 'gaana', 'geet', 'status', 'shayari', 'recipe',
+                'sabji', 'dal', 'roti', 'nashta', 'khana', 'sehat', 'ilaaj', 'dawa', 'gharelu',
+                'nuskhe', 'jankari', 'samachar', 'khabar', 'taza', 'badi', 'choti', 'poora', 'pura'
+            ]);
+
+            const words = text.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/);
+            let hinglishScore = 0;
+
+            for (const w of words) {
+                if (hinglishWords.has(w)) {
+                    hinglishScore++;
+                }
+            }
+
+            // Even 1 strong Hinglish word in a title indicates Hinglish target audience
+            if (hinglishScore >= 1) {
+                return 'hinglish';
+            }
+
+            return 'english';
+        }
+
+        // Clean and extract core topic keywords from title
+        function extractTopicDetails(title) {
+            // Remove brackets/parentheses clutter for clean core topic, while keeping original
+            const cleanTitle = title.replace(/[\|\[\]\(\)\{\}]/g, ' ').replace(/\s+/g, ' ').trim();
+            
+            // Split by common separators like |, -, :, // to get main topic phrase
+            const parts = title.split(/[\|\-\:\–\—\/]+/).map(p => p.trim()).filter(p => p.length > 2);
+            const mainTopic = parts[0] || cleanTitle;
+
+            // Stopwords to filter out when building atomic keywords
+            const stopWords = new Set([
+                'the', 'is', 'in', 'at', 'of', 'on', 'and', 'a', 'to', 'for', 'with', 'by', 'from', 'how', 'what', 'why', 'when', 'where',
+                'kaise', 'kya', 'kyu', 'hai', 'hain', 'mein', 'me', 'ko', 'se', 'ka', 'ki', 'ke', 'aur', 'par', 'pe', 'ek', 'ye', 'wo',
+                'का', 'के', 'की', 'को', 'में', 'से', 'पर', 'और', 'है', 'हैं', 'कैसे', 'क्या', 'क्यों', 'एक', 'यह', 'वह', 'लिए'
+            ]);
+
+            const words = cleanTitle
+                .toLowerCase()
+                .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+                .split(/\s+/)
+                .filter(w => w.length > 1 && !stopWords.has(w));
+
+            return {
+                fullTitle: title.trim(),
+                cleanTitle: cleanTitle,
+                mainTopic: mainTopic,
+                keywords: [...new Set(words)]
+            };
+        }
+
+        // Random array picker for natural variation (anti-AI footprint)
+        function pickRandom(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        // Shuffle array
+        function shuffle(arr) {
+            const copy = [...arr];
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
+
+        function generateSEO() {
+            const rawTitle = document.getElementById('videoTitle').value.trim();
+            if (!rawTitle) {
+                alert("Kripya pehle Video Title likhein ya link se fetch karein!");
+                return;
+            }
+
+            const channelName = document.getElementById('channelName').value.trim();
+            const lang = detectLanguage(rawTitle);
+            
+            const badge = document.getElementById('detectedLangBadge');
+            badge.textContent = lang.toUpperCase();
+
+            const info = extractTopicDetails(rawTitle);
+            const topicLower = info.mainTopic.toLowerCase();
+            const cleanLower = info.cleanTitle.toLowerCase();
+            const year = new Date().getFullYear();
+
+            let description = "";
+            let queriesList = [];
+            let hashtags = [];
+            let tagCandidates = [];
+
+            const emojis = ["👉", "✅", "📌", "🔥", "💡", "🎯", "✨"];
+
+            if (lang === 'hinglish') {
+                const intros = [
+                    `Doston, aaj ke is video mein humne ${info.mainTopic} ke baare mein bilkul detail aur aasaan bhasha mein baat ki hai. Agar aap bhi is topic ko lekar confuse the ya sahi jankari dhoondh rahe the, to yeh video end tak zaroor dekhein.`,
+                    `Namaskar doston! Bahut time se aap logon ke comments aa rahe the ki ${info.mainTopic} par ek complete video banaya jaye. To finally aaj humne saare important points aur practical tips is video mein share kar diye hain.`,
+                    `Hello friends, swagat hai aapka ek aur naye video mein! Aaj hum detail mein cover karne wale hain ${info.mainTopic}. Video ko bina skip kiye poora dekhein taaki koi bhi zaroori step miss na ho.`
+                ];
+
+                const outros = [
+                    `Agar aapko yeh video pasand aaya ho aur kuch naya seekhne ko mila ho, to video ko Like aur Share zaroor karein. Aapke koi bhi sawal ya sujhav hain to neeche comment box mein likh sakte hain!`,
+                    `Umeed hai is video se aapki kaafi help hui hogi. Aise hi aur useful videos dekhne ke liye channel ko Subscribe karke bell icon dabana na bhulein. Milte hain agle video mein!`
+                ];
+
+                queriesList = [
+                    `${topicLower} kaise kare ${year}`,
+                    `${topicLower} full details in hindi`,
+                    `${topicLower} kya hai aur kaise kaam karta hai`,
+                    `${topicLower} step by step guide`,
+                    `${topicLower} best tips and tricks`,
+                    `${cleanLower} complete information`,
+                    `${topicLower} se judi zaroori baatein`
+                ];
+
+                const selectedQueries = shuffle(queriesList).slice(0, 6);
+                const formattedQueries = selectedQueries.map((q, idx) => `${emojis[idx % emojis.length]} ${q}`).join('
+');
+
+                description = `${pickRandom(intros)}
+
+`;
+                if (channelName) {
+                    description += `Channel: ${channelName}
+
+`;
+                }
+                description += `Queries Covered:
+${formattedQueries}
+
+`;
+                description += `${pickRandom(outros)}`;
+
+                // Hashtags
+                const kw = info.keywords;
+                hashtags = [
+                    `#${kw.slice(0, 2).join('') || 'trending'}`,
+                    `#${kw[0] || 'youtube'}`,
+                    kw[1] ? `#${kw[1]}` : `#hinditips`,
+                    `#youtubeindia`,
+                    `#trending${year}`,
+                    `#viral`
+                ];
+
+                // Tag candidates (lowercase)
+                tagCandidates = [
+                    cleanLower,
+                    topicLower,
+                    `${topicLower} in hindi`,
+                    `${topicLower} ${year}`,
+                    `${topicLower} kaise kare`,
+                    `${topicLower} full video`,
+                    `${topicLower} explained`,
+                    ...info.keywords,
+                    ...info.keywords.map(k => `${k} hindi`),
+                    ...info.keywords.map(k => `${k} tips`),
+                    `trending video ${year}`,
+                    `youtube hindi`,
+                    channelName ? channelName.toLowerCase() : ''
+                ];
+
+            } else if (lang === 'hindi') {
+                const intros = [
+                    `नमस्कार दोस्तों, आज के इस वीडियो में हमने ${info.mainTopic} के बारे में पूरी विस्तार से और आसान भाषा में जानकारी दी है। अगर आप भी इस विषय पर सही और सटीक जानकारी ढूंढ रहे थे, तो इस वीडियो को अंत तक ज़रूर देखें।`,
+                    `स्वागत है दोस्तों आपका हमारे चैनल पर! आज हम बात करने वाले हैं ${info.mainTopic} के बारे में। इस वीडियो में हमने हर एक ज़रूरी पहलू को सरल तरीके से समझाया है ताकि आपको पूरी मदद मिल सके।`,
+                    `दोस्तों, आप में से कई लोगों ने ${info.mainTopic} के बारे में पूछा था। आज के इस खास वीडियो में हमने इससे जुड़ी सभी महत्वपूर्ण बातें और उपयोगी सुझाव साझा किए हैं।`
+                ];
+
+                const outros = [
+                    `अगर आपको यह वीडियो उपयोगी लगा हो तो इसे लाइक और शेयर ज़रूर करें। आपके मन में कोई भी सवाल हो तो नीचे कमेंट करके पूछ सकते हैं। ऐसे ही और वीडियो देखने के लिए चैनल को सब्सक्राइब करना न भूलें!`,
+                    `उम्मीद है इस वीडियो से आपको सही जानकारी मिली होगी। वीडियो पसंद आए तो अपना प्यार ज़रूर दें और चैनल के साथ जुड़े रहें। धन्यवाद!`
+                ];
+
+                queriesList = [
+                    `${info.mainTopic} की पूरी जानकारी`,
+                    `${info.mainTopic} कैसे करें ${year}`,
+                    `${info.mainTopic} क्या है विस्तार से जानें`,
+                    `${info.mainTopic} से जुड़ी ज़रूरी बातें`,
+                    `${info.mainTopic} के फायदे और सही तरीका`,
+                    `${info.cleanTitle} हिंदी में`,
+                    `${info.mainTopic} स्टेप बाय स्टेप गाइड`
+                ];
+
+                const selectedQueries = shuffle(queriesList).slice(0, 6);
+                const formattedQueries = selectedQueries.map((q, idx) => `${emojis[idx % emojis.length]} ${q}`).join('
+');
+
+                description = `${pickRandom(intros)}
+
+`;
+                if (channelName) {
+                    description += `चैनल: ${channelName}
+
+`;
+                }
+                description += `Queries Covered:
+${formattedQueries}
+
+`;
+                description += `${pickRandom(outros)}`;
+
+                const kw = info.keywords;
+                hashtags = [
+                    `#${kw[0] || 'हिंदी'}`,
+                    kw[1] ? `#${kw[1]}` : `#जानकारी`,
+                    `#hindivideo`,
+                    `#youtubeindia`,
+                    `#trending`,
+                    `#viral${year}`
+                ];
+
+                tagCandidates = [
+                    cleanLower,
+                    topicLower,
+                    `${topicLower} ${year}`,
+                    `${topicLower} की जानकारी`,
+                    `${topicLower} कैसे करें`,
+                    `${topicLower} हिंदी वीडियो`,
+                    ...info.keywords,
+                    `hindi video ${year}`,
+                    `trending hindi`,
+                    channelName ? channelName.toLowerCase() : ''
+                ];
+
+            } else {
+                // English
+                const intros = [
+                    `In today's video, we are breaking down everything you need to know about ${info.mainTopic}. Whether you are just getting started or looking for practical insights, make sure to watch till the end so you don't miss any key details.`,
+                    `Welcome back to the channel! A lot of you have been asking about ${info.mainTopic}, so I put together this complete walkthrough covering all the essential tips, steps, and real-world takeaways.`,
+                    `Hey everyone, today we are taking a closer look at ${info.mainTopic}. I've kept things straightforward and practical so you can easily follow along and get the best results.`
+                ];
+
+                const outros = [
+                    `If you found this video helpful, hit the Like button and share it with someone who needs to see this. Drop your questions or thoughts in the comments below, and subscribe for more practical videos every week!`,
+                    `Thanks for watching! Let me know your thoughts in the comments section, and don't forget to subscribe and turn on notifications so you never miss an update.`
+                ];
+
+                queriesList = [
+                    `how to do ${topicLower} step by step`,
+                    `${topicLower} full guide ${year}`,
+                    `${topicLower} explained for beginners`,
+                    `everything about ${topicLower}`,
+                    `${topicLower} tips and tricks that work`,
+                    `${cleanLower} complete tutorial`,
+                    `best way for ${topicLower} in ${year}`
+                ];
+
+                const selectedQueries = shuffle(queriesList).slice(0, 6);
+                const formattedQueries = selectedQueries.map((q, idx) => `${emojis[idx % emojis.length]} ${q}`).join('
+');
+
+                description = `${pickRandom(intros)}
+
+`;
+                if (channelName) {
+                    description += `Channel: ${channelName}
+
+`;
+                }
+                description += `Queries Covered:
+${formattedQueries}
+
+`;
+                description += `${pickRandom(outros)}`;
+
+                const kw = info.keywords;
+                hashtags = [
+                    `#${kw.slice(0, 2).join('') || 'trending'}`,
+                    `#${kw[0] || 'youtube'}`,
+                    kw[1] ? `#${kw[1]}` : `#guide`,
+                    `#tutorial`,
+                    `#trending${year}`,
+                    `#viral`
+                ];
+
+                tagCandidates = [
+                    cleanLower,
+                    topicLower,
+                    `${topicLower} ${year}`,
+                    `${topicLower} tutorial`,
+                    `${topicLower} guide`,
+                    `${topicLower} explained`,
+                    `how to ${topicLower}`,
+                    ...info.keywords,
+                    ...info.keywords.map(k => `${k} tips`),
+                    ...info.keywords.map(k => `${k} ${year}`),
+                    `trending ${year}`,
+                    channelName ? channelName.toLowerCase() : ''
+                ];
+            }
+
+            // Clean up hashtags (remove special characters except # and letters/numbers)
+            const cleanHashtags = [...new Set(
+                hashtags
+                    .map(h => '#' + h.replace(/^#+/, '').replace(/[^\p{L}\p{N}]/gu, '').toLowerCase())
+                    .filter(h => h.length > 2)
+            )].slice(0, 6);
+
+            // Build lowercase comma-separated tags strictly within 460 characters
+            const uniqueTags = [...new Set(
+                tagCandidates
+                    .map(t => t.toLowerCase().replace(/[,|]/g, ' ').replace(/\s+/g, ' ').trim())
+                    .filter(t => t.length > 1)
+            )];
+
+            let finalTags = [];
+            let currentLength = 0;
+
+            for (const tag of uniqueTags) {
+                // Account for ", " separator (2 chars) if not the first tag
+                const addedLength = finalTags.length === 0 ? tag.length : tag.length + 2;
+                if (currentLength + addedLength <= 460) {
+                    finalTags.push(tag);
+                    currentLength += addedLength;
+                }
+            }
+
+            // Populate UI
+            document.getElementById('descOutput').value = description;
+            document.getElementById('hashtagOutput').value = cleanHashtags.join(' ');
+            document.getElementById('tagsOutput').value = finalTags.join(', ');
+            updateTagCount();
+        }
+
+        function updateTagCount() {
+            const val = document.getElementById('tagsOutput').value;
+            const counter = document.getElementById('tagCharCount');
+            const len = val.length;
+            counter.textContent = `${len} / 460 chars`;
+            if (len > 0 && len <= 460) {
+                counter.classList.add('valid');
+                counter.style.color = "#10b981";
+            } else if (len > 460) {
+                counter.classList.remove('valid');
+                counter.style.color = "#ef4444";
+            } else {
+                counter.classList.remove('valid');
+                counter.style.color = "#94a3b8";
+            }
+        }
+
+        function copyText(elementId, btn) {
+            const el = document.getElementById(elementId);
+            if (!el.value) return;
+
+            navigator.clipboard.writeText(el.value).then(() => {
+                const originalText = btn.textContent;
+                btn.textContent = "Copied!";
+                btn.classList.add("copied");
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove("copied");
+                }, 1800);
+            });
+        }
+    </script>
+</body>
+</html>
